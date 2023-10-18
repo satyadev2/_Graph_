@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define vll vector<long long>
+#define pb push_back
+#define ss second
+#define ff first
+#define sum(vec) accumulate(vec.begin(), vec.end())
+#define win(vec) vec.begin(), vec.end()
+#define rwin() vec.rbegin(), vec.rend()
+// 2^k--->(n && (!(n & (n - 1))))  ---(n & (n-1))
+//-- -- -- -- -- --Sieve------------- //
+vector<int> sieveOfEratosthenes(int n)
+{
+    vector<bool> prime(n + 1, true);
+    vector<int> primes;
+    prime[0] = prime[1] = false;
+    for (int p = 2; p * p <= n; ++p)
+    {
+        if (prime[p])
+        {
+            for (int i = p * p; i <= n; i += p)
+            {
+                prime[i] = false;
+            }
+        }
+    }
+    for (int p = 2; p <= n; ++p)
+    {
+        if (prime[p])
+        {
+            primes.push_back(p);
+        }
+    }
+    return primes;
+}
+
+// transformation
+vector<int> DfsOfGraph(int V, vector<int> adj[], map<int, vector<int>> &mp)
+{
+    for (int i = 0; i < V; i++)
+    {
+        for (auto j : adj[i])
+        {
+            mp[i].push_back(j)
+        }
+    }
+}
+
+// -----------------------------DFS---------------------------//
+// void dfs(int source, vector<int> graph[], vector<int> &visited, vector<int> &result) {
+//     if (!visited[source]) {
+//         result.push_back(source);
+//         visited[source] = 1;
+//         for (auto i : graph[source]) {
+//             if (!visited[i]) {
+//                 dfs(i, graph, visited, result);
+//             }
+//         }
+//     }
+// }
+
+// vector<int> DfsOfGraph(int V, vector<int> adj[])
+// {  ADJ---array of vectors
+//     vector<int> visited(V, 0);
+//     vector<int> res;
+
+//     dfs(0, adj, visited, res);
+
+//     return res;
+// }
+
+//-------------------main-------------------//
+int main()
+{
+    map<int, vector<int>> graph;
+
+    return 0;
+}
+
+                            BFS
+                                - Shortest path
+
+1.Cycle Detection
+2.
